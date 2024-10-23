@@ -116,17 +116,16 @@ label Case_breifing:
         ava "You'll be using this phone to communicate with our three suspects, the tech guys have set it up to capture everything you guys talk about for evidence."
         show detective talking
         with dissolve
-        hide detective talking
         ava "I'm going to go and research more into how these scammers work why don't you spend some time looking at our suspects profiles before they message you."
         "Ava heads off to start her research, leaving you with your new work phone."
-        hide detective normal
+        hide detective talking
         with moveoutright
         show phone
         with moveinbottom
         "On the phone you can see the only app installed is the dating app Ava mentioned. You open it and are greeted with three profiles to look at."
     
         menu profile_menu: 
-            "Which profile will you look at first?"
+            "Which profile do you want to view?"
 
             "Emma" if not viewed_emma:
                 $ viewed_emma = True
@@ -134,13 +133,30 @@ label Case_breifing:
             "Frank" if not viewed_frank:
                 $ viewed_frank = True
                 call frank_intro
-            "oscar" if not viewed_oscar:
+            "Oscar" if not viewed_oscar:
                 $ viewed_oscar = True
                 call oscar_intro
             
             "continue" if viewed_emma and viewed_frank and viewed_oscar:
+                jump getting_started
 
-                jump end_game
+        label getting_started:
+            "After looking at the three possible suspects, its far too early into your investigation to guess who the fraudster is."
+            "You decide it's time to make contact with your first suspect, since you can do this work anywhere you decided to go for a walk and stretch your legs whilst working."
+            scene park 1 day
+            with fade
+            "You find a nice spot in the park and open up the dating app."
+            menu first_chat_menu:
+                "who do you want to chat to?"
+                "Emma":
+                    call emma_first_interaction
+                "Frank":
+                    call frank_first_interaction
+                "Oscar":
+                    call oscar_first_interaction
+                "Continue":
+                    jump end_game
+
 
 label emma_intro:
         show phone at left
@@ -150,6 +166,10 @@ label emma_intro:
         perfectly taken, as though by a professional."
         hide emma normal with moveoutright
         jump profile_menu
+
+label emma_first_interaction:
+    show phone at left with moveinbottom
+    show emma normal at right with moveinright
 
 label frank_intro:
         show phone at left
@@ -170,4 +190,4 @@ label oscar_intro:
     
 label end_game:
         "You've finished the game thanks for playing"
-    return
+return
