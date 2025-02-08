@@ -116,6 +116,8 @@ label Case_breifing:
         show detective normal
         with dissolve
         ava "You'll be using this phone to communicate with our three suspects, the tech guys have set it up to capture everything you guys talk about for evidence."
+        ava "Try to learn as much about the suspects as you can and don't forget to keep me updated on your progress."
+        ava "Also don't forget to keep your cover story straight, we don't want to scare off the suspect."
         show detective talking
         with dissolve
         ava "I'm going to go and research more into how these scammers work why don't you spend some time looking at our suspects profiles before they message you."
@@ -147,6 +149,10 @@ label Case_breifing:
 
 
         label getting_started:
+
+            $ interacted_emma_day1 = False
+            $ interacted_frank_day1 = False
+            $ interacted_oscar_day1 = False
             "After looking at the three possible suspects, its far too early into your investigation to guess who the fraudster is."
             "You decide it's time to make contact with your first suspect, since you can do this work anywhere you decided to go for a walk and stretch your legs whilst working."
             scene park 1 day
@@ -156,16 +162,23 @@ label Case_breifing:
             "You find a nice spot in the park and open up the dating app."
             menu first_chat_menu:
                 "who do you want to chat to?"
-                "Emma":
+                "Emma" if not interacted_emma_day1:
+                    $ interacted_emma_day1 = True
                     call emma_first_interaction
-                "Frank":
+                "Frank" if not interacted_frank_day1:
+                    $ interacted_frank_day1 = True
                     call frank_first_interaction
-                "Oscar":
+                "Oscar" if not interacted_oscar_day1:
+                    $ interacted_oscar_day1 = True
                     call oscar_first_interaction
                     return
+            
+            "Before you know it, the sun is setting and it's time to head home."
+            "You've made good progress today, but you know there's still a long way to go before you can catch the fraudster."
+            "Perhaps Ava has some more information for you tomorrow."
+            jump day1_debrief
         return     
-
-
+# Scripts for Emma
 label emma_intro:
         show phone at left
         "This profile shows Emma, she's 29 and a software developer."
@@ -215,6 +228,7 @@ label emma_personal:
     menu:
         "Tell her you're in law enforcement (truthful, vague)":
             "I work in law enforcement. It keeps me busy."
+            $ told_truth = True
             emma "Whoa, that’s kind of cool! But also, kind of scary?"
             emma "I promise I haven’t done anything illegal... lately. Kidding!"
             jump emma_suspicious
@@ -240,9 +254,9 @@ label emma_suspicious:
     
     "You chat with Emma for a little while longer before wrapping up the conversation."
     hide emma normal with moveoutright
-    return
+    jump first_chat_menu
 
-
+# Scripts for Frank
 label frank_intro:
         show phone at left
         "This profile shows Frank, he's 26 and an artist."
@@ -293,6 +307,7 @@ label frank_personal:
     menu:
         "Tell him you're in law enforcement (truthful, vague)":
             "I work in law enforcement."
+            $ told_truth = True
             frank "Wow, that’s really cool. Must be tough, though."
             frank "I respect people who dedicate their lives to helping others."
             jump frank_suspicious
@@ -316,9 +331,9 @@ label frank_suspicious:
     
     "You chat with Frank for a while longer before wrapping up the conversation."
     hide frank normal with moveoutright
-    return
+    jump first_chat_menu
 
-
+# Scripts for Oscar
 label oscar_intro:
         show phone at left
         "This profile shows Oscar, he's 30 and a financial advisor"
@@ -367,6 +382,7 @@ label oscar_job:
     menu:
         "Tell him you're in law enforcement (truthful, vague)":
             "I work in law enforcement."
+            $ told_truth = True
             oscar "Oh wow, that’s intense. Must be exciting though."
             oscar "I bet you see some crazy stuff. Hopefully nothing that involves me! Haha."
             jump oscar_suspicious
@@ -393,7 +409,31 @@ label oscar_suspicious:
     
     "You chat with Oscar for a while longer before wrapping up the conversation."
     hide oscar normal with moveoutright
-    return
+    jump first_chat_menu
+
+# Scripts for Ava
+label day1_debrief:
+    scene bg library_day
+    with fade
+    show detective normal
+    with dissolve
+    ava "So, how did it go? Ready for the next step?"
+    "You tell Ava about your conversations with the three suspects and how they went."
+    
+    if told_truth:
+        show detective angry
+        with dissolve
+        ava "Wait a second—did you tell any of them that you're in law enforcement?"
+        ava "You can’t just go around giving out that kind of information! You could have compromised the entire operation."
+        ava "From now on, keep your cover story straight. We don’t want to scare off the suspect."
+        show detective normal
+        with dissolve
+    
+    ava "Alright, I've done some research, let’s talk about a key tactic romance fraudsters use."
+    ava "They often give away harmless personal details early on—like where they grew up, what they do for work, or what their dreams are."
+    ava "Later, they use these same details as ‘evidence’ to build their scam, making their requests for money seem more legitimate and urgent."
+    ava "So pay attention to what they tell you at the start. It might seem innocent now, but it could be part of a bigger scheme."
+    ava "Got it? Good. I'll keep researching and you keep talking to them and let's see what we uncover."
 
     
 # This ends the game.  
