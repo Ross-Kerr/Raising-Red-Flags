@@ -1,3 +1,11 @@
+default shared_dream = False
+default asked_dream = False
+
+
+$ shared_dream = False
+$ asked_dream = False
+$ told_truth = False
+
 # Scripts for Emma
 label emma_intro:
     show phone at left
@@ -80,9 +88,10 @@ label emma_day2:
     scene bg downtown1
     with fade
     "As you walk through the city, on your way to get yourself a coffee, you hear a buzz from your work phone."
-    play sound phone_vibrate
+    play sound "audio/Effects/phone-vibration.wav"
     show phone at left with moveinleft
     "It's a message from Emma."
+    show emma normal at right with moveinright
     emma "Hey you! I was hoping to hear from you."
     emma "You know, I feel like we’re really clicking. Like, I can talk to you about anything."
     emma "Is that weird to say? I don’t know, I just trust you already."
@@ -94,10 +103,43 @@ label emma_day2:
             "That’s really sweet. I feel like we’re building something good too."
             emma "I love that! It’s so rare to just click with someone so quickly."
             emma "I don’t know... I just feel like I can be myself with you."
-            jump suspect_menu2
+           
         
         "Stay neutral":
             "That’s nice of you to say. I appreciate it."
             emma "Just being honest! I like this."
             emma "I hope you feel the same way."
-            jump suspect_menu2
+    emma "I’m really glad we matched. I can’t wait to see where this goes."
+    emma "Tell me have you ever had a big dream? something you've always wanted to do?"
+    menu emma_dreams:
+        "Share your dream" if shared_dream == False:
+            "I've always wanted to travel the world. I want to see everything."
+            $ shared_dream = True
+            emma "That’s amazing! I love that. I think everyone should travel at least once."
+            emma "There’s so much to see and learn out there."
+            call emma_dreams
+        
+        "Ask her about her dream" if asked_dream == False:
+            "What about you? What’s something you’ve always wanted to do?"
+            $ asked_dream = True
+            emma "I've always wanted to develop my own computer game."
+            emma "The problem is though, the cost involved in making games is super high."
+            emma "But I'm working on it, slowly but surely."
+            emma "I think it would be so cool to see something I made out there in the world."
+            emma "Maybe one day, right?"
+            call emma_dreams
+
+        "Continue" if shared_dream and asked_dream:
+            jump emma_day2_continue
+            return
+label emma_day2_continue:
+    emma "I just feel like I could talk to you all day"
+    emma "I hope you feel the same way."
+    "You chat with Emma for a little while longer until your phone buzzes again."
+    play sound  "audio/Effects/phone-vibration.wav"
+    "Its a message from Oscar."
+    "You let Emma know you have to go and say goodbye."
+    hide emma normal with moveoutright
+    jump oscar_day2
+    return
+            

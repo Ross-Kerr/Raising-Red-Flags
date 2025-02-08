@@ -8,6 +8,8 @@ define frank = Character("Frank")
 define oscar = Character("Oscar")
 define unknown = Character("...")
 define config.main_menu_music = "audio/everyday_life.ogg"
+default told_truth = False
+
 
 # The game starts here.
 
@@ -86,6 +88,7 @@ label Case_breifing:
         $ viewed_emma = False
         $ viewed_frank = False
         $ viewed_oscar = False
+        $ told_truth = False
 
         show detective normal
         with dissolve
@@ -180,7 +183,7 @@ label Case_breifing:
         return
 
 label suspect_menu2:
-    
+
 
 # This ends the game.  
 label end_game:

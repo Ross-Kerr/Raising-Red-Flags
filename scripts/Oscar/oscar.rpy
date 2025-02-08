@@ -1,3 +1,11 @@
+default current_investments = False
+default previous_investments = False
+
+
+$ told_truth = False
+
+
+
 # Scripts for Oscar
 label oscar_intro:
     show phone at left
@@ -75,3 +83,65 @@ label oscar_suspicious:
     "You chat with Oscar for a while longer before wrapping up the conversation."
     hide oscar normal with moveoutright
     jump first_chat_menu
+
+label oscar_day2:
+    scene bg downtown1
+    show phone at left
+    "It looks like Oscar has sent you a message."
+    show oscar normal at right with moveinright
+    oscar "Hey there! Hope you’re having a great day."
+    oscar "I hope you don't mind me messaging you back so soon, to be honest I'm hoping you can help me with something."
+    oscar "I have a big investors meeting later today and I'm feeling a bit stressed."
+    oscar "I'm just not sure of myself, what if I screw this up? A lot is riding on this."
+    oscar "Any advice?"
+    menu:
+        "Offer advice":
+            "You've got this! Confidence is key. Just be yourself and you'll do great."
+            oscar "You really think so?"
+            "Of course! You're a pro at this. Just remember to breathe and take it one step at a time."
+            oscar "Thanks, I needed that. I'll let you know how it goes."
+            oscar "I really appreciate you taking the time to chat with me."
+
+        "Stay neutral":
+            "I'm sure you'll be fine, dont stress too much."
+            oscar "I guess you're right, thanks."
+
+    oscar "Anyway, I just wanted to say I enjoyed our chat yesterday. I feel like we really connected."
+    oscar "I hope we can keep talking, I'd love to get to know you better."
+    oscar "Tell you what, I could tell you about some of my investments, let you get a better understanding of what I do."
+    menu oscar_investments:
+        "Ask about his big meeting today" if current_investments == False:
+            "So what is this investment meeting you have today about?"
+            $ current_investments = True
+            oscar "It's a big one. I'm meeting with some potential investors for a new project."
+            oscar "It's a big deal for me, I'm hoping to get them on board."
+            oscar "I just need to make sure I'm on top of my game."
+            oscar "It's a bid to turn a local abandoned building into an entertainment complex."
+            oscar "It'll have things like bowling, arcade games, a bar, and a restaurant."
+            oscar "I'm hoping to get the investors to see the potential in it."
+            call oscar_investments
+        
+        "Ask about his previous investments" if previous_investments == False:
+            "What kind of investments do you usually work on?"
+            $ previous_investments = True
+            oscar "I usually work with property investments. I find it's a good way to make money."
+            oscar "I've had some good success with it in the past."
+            oscar "I'm hoping this new project will be a big hit."
+            oscar "I'm always looking for new opportunities to invest in, it's exciting."
+            oscar "Like previously I invested in a local coffee shop, it's doing really well."
+            oscar "I also managed to get funding for a set of luxury apartments, they're almost finished."
+            call oscar_investments
+        
+        "Continue" if current_investments and previous_investments:
+            jump oscar_day2_continue
+            return
+        
+label oscar_day2_continue:
+    "You seem to be doing pretty well for yourself."
+    "I'm sure you'll do great at your meeting today."
+    oscar "Thanks, I appreciate the support. It's a strange feeling sometimes to be dealing with so much money."
+    oscar "I think I've managed to get a good grip on it though, anyway I better get going and prepare for this meeting thanks again for the advice."
+    hide oscar normal with moveoutright
+    hide phone with moveoutright
+    jump end_game
+    return

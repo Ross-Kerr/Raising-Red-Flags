@@ -1,3 +1,5 @@
+$ told_truth = False
+
 # Scripts for Frank
 label frank_intro:
     show phone at left

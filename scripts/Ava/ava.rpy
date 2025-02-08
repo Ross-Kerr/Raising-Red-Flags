@@ -1,3 +1,5 @@
+$ told_truth = False
+
 # Scripts for Ava
 label day1_debrief:
     scene bg library_day
@@ -23,4 +25,4 @@ label day1_debrief:
     ava "Got it? Good. I'll keep researching and you keep talking to them and let's see what we uncover."
     hide detective normal
     jump emma_day2
-    
+
