@@ -87,6 +87,9 @@ label emma_suspicious:
 label emma_day2:
     scene bg downtown1
     with fade
+    stop music fadeout 2.0
+    play music "the_cafe.wav" fadein 2.0
+    
     "As you walk through the city, on your way to get yourself a coffee, you hear a buzz from your work phone."
     play sound "audio/Effects/phone-vibration.wav"
     show phone at left with moveinleft

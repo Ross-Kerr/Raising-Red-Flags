@@ -135,6 +135,7 @@ label oscar_day2:
         "Continue" if current_investments and previous_investments:
             jump oscar_day2_continue
             return
+    return
         
 label oscar_day2_continue:
     "You seem to be doing pretty well for yourself."
@@ -143,5 +144,6 @@ label oscar_day2_continue:
     oscar "I think I've managed to get a good grip on it though, anyway I better get going and prepare for this meeting thanks again for the advice."
     hide oscar normal with moveoutright
     hide phone with moveoutright
-    jump end_game
-    return
+    "Having finished your chat with Oscar, you decide to continue with your day."
+    jump frank_day2
+return

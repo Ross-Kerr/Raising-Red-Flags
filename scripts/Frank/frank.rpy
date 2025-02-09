@@ -76,3 +76,71 @@ label frank_suspicious:
     "You chat with Frank for a while longer before wrapping up the conversation."
     hide frank normal with moveoutright
     jump first_chat_menu
+
+label frank_day2:
+    scene bg hall day
+    with fade
+        
+    "You've spent the afternoon filling out paperwork and updating your notes on the case."
+    "As you head out of the office, you decide you should contact Frank and send him a message." 
+    show phone at left with moveinleft
+    show frank normal at right with moveinright
+    frank "Hey there! I was hoping to hear from you."
+    frank "I’ve been feeling kind of down lately."
+    frank "Selling art has been tough, and money’s getting tight."
+    frank "I pour my heart into my paintings, but it’s like no one sees their worth."
+    frank "Sometimes I wonder if I should just give up, but I don’t know who I’d be without my art."
+    menu:
+        "Offer support":
+            "That sounds really hard. I’m sorry you’re going through that."
+            frank "Thanks... It means a lot to hear that."
+            frank "I just wish people appreciated art more, you know?"
+            frank "It’s not just about the money, it’s about feeling like what I create matters."
+            frank "But enough about me... Tell me, what keeps you going when things get tough?"
+            menu:
+                "Share something motivational":
+                    "I try to remind myself why I started. Passion is worth the struggle."
+                    frank "That’s a beautiful way to look at it."
+                    frank "Maybe I need to stop worrying about the sales and just focus on creating."
+                    
+                "Keep it lighthearted":
+                    "Honestly? Coffee and good music."
+                    frank "Ha! I love that. Simple joys, right?"
+                    frank "Maybe I just need a good playlist while I paint."
+                    
+        
+        "Change the subject":
+            "That’s rough. But hey, let’s talk about something fun to cheer you up."
+            frank "Yeah... maybe that would help."
+            frank "Tell me something good that happened to you lately."
+            menu:
+                "Share a positive moment":
+                    "I had a really good day at work recently."
+                    frank "That’s great to hear! I love when things just fall into place."
+                    frank "Maybe my luck will turn around too."
+                    
+                "Make a joke":
+                    "I finally managed to cook a meal without burning it."
+                    frank "Oh, that’s an accomplishment worth celebrating!"
+                    frank "Maybe you’ll have to cook for me sometime."
+    
+    frank "Maybe I should use you as an inspiration for my next painting."
+    frank "I feel like you have a lot of depth and emotion. It could be really powerful."
+    menu:
+        "Encourage him":
+            "I’d be honored. Your art is amazing, I’d love to see your vision of me."
+            frank "Thank you. I’ll make sure it’s something special."
+        
+        "Stay neutral":
+            "That’s a really kind offer. I appreciate it."
+            frank "I just think you have a lot of stories to tell. I’d love to capture that."
+    frank "I really think that anything is possible when you have the right inspiration."
+    frank "And I definitely feel inspired when I talk to you."
+    frank "I know it might seem intense but that is just who I am."
+    frank "You just got to embrace the intensity of life."
+    "You chat with Frank for a little while longer before wrapping up the conversation."
+    hide frank normal with moveoutright
+    hide phone with moveoutleft
+    "You head home, you try and recall anything that might help you in your investigation."
+    jump ava_day2
+    return
