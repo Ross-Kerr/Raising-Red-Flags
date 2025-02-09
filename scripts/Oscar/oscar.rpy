@@ -147,3 +147,66 @@ label oscar_day2_continue:
     "Having finished your chat with Oscar, you decide to continue with your day."
     jump frank_day2
 return
+
+label oscar_day3:
+    show oscar normal at right with moveinright
+    show phone at left with moveinleft
+    "You take another look at Oscar's profile."
+    "His photos show him at various events and gatherings, always surrounded by people."
+    "He has quite a few photos of landmarks from other countries, suggesting he travels often."
+    "You see photos of the Eiffel Tower, the Leaning Tower of Pisa and even the Great Wall of China."
+    "You decide to send him a message and see how he responds."
+    oscar "Hey I was hoping to hear from you today. How’s your day going?"
+    "Not bad, just doing some work. How about you?"
+    oscar "My day is going okay despite the stress of the meeting yesterday."
+    oscar "I was able to get the investors on board with the project, they loved the idea."
+    oscar "However they didn't invest as much as I was hoping for, so I'm still a bit stressed."
+    "I'm glad to hear it went well for you."
+    oscar "Thanks, I appreciate that. I'm just hoping I can make this project a success."
+    oscar "I dont suppose you know anyone who would be interested in investing in a project like this?"
+    menu:
+        "Offer to help":
+            "I might know someone who would be interested. I can ask around for you."
+            oscar "That would be amazing! I'd really appreciate that."
+            oscar "I'm hoping to get the funding I need to make this project a success."
+            oscar "I'll owe you big time if you can help me out."
+            oscar "I don't suppose you'd be interested in investing yourself?"
+            menu:
+                "Say you'd consider it":
+                    "I'd have to look into it, but I'm open to the idea."
+                    oscar "That's all I ask."
+                    oscar "I just need to get the funding I need to make this project a success."
+                    oscar "I'll owe you"
+
+                "Say you are not interested":
+                    "I'm not in a position to invest right now."
+                    oscar "That's okay, I understand."
+                    oscar "I'm just hoping I can get the funding I need to make this project a success."
+                    oscar "I'll owe you big time if you can help me out."
+        
+        "Stay neutral":
+            "I'm not sure, but I'll keep an ear out."
+            oscar "That's okay, I appreciate you even considering it."
+
+    "Do you have any photos of the project you could show me?"
+    "I'd love to see what you're working on."
+    oscar "Not at the moment, all I have are a few boring blueprints."
+    oscar "I'm hoping to get some photos of the building soon though."
+    oscar "I'll make sure to show you when I do."
+    "I was just looking through your profile, you seem to travel a lot."
+    "What's your favorite place you've visited?"
+    oscar "That's a tough one, I've been to so many amazing places."
+    oscar "I think my favorite would have to be Paris, it's just so beautiful."
+    oscar "The food, the art, the culture, it's all amazing."
+    "I'd love to visit Paris one day."
+    oscar "You should, it's an amazing experience."
+    oscar "I could even show you around if you wanted."
+    oscar "If I'm able to pull of this big project, I might even be able to take you there."
+    "That sounds amazing, I'd love to see Paris."
+    oscar "I'll make sure to keep you updated on the project then."
+    "You chat with Oscar for a little while longer and then say goodbye."
+    hide oscar normal with moveoutright
+    hide phone with moveoutleft
+    "You decide its best to start filling in your report for today before you forget anything."
+    jump suspect_choice2
+    return

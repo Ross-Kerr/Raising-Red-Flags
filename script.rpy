@@ -182,9 +182,6 @@ label Case_breifing:
             jump day1_debrief
         return
 
-label suspect_menu2:
-
-
 # This ends the game.  
 label end_game:
         scene bg gate_day

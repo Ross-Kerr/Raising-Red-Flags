@@ -72,8 +72,14 @@ label ava_day2:
     return.
 
 label day3:
-    scene bg office
+    $ emma_questioned = False
+    $ frank_questioned = False
+    $ oscar_questioned = False
+
+    scene bg library_day
     with fade
+    stop music fadeout 2.0
+    play music "audio/Wav/1. Playground.wav" fadein 2.0
     show detective normal
     with dissolve
     ava "Good morning! How are you feeling today?"
@@ -86,5 +92,51 @@ label day3:
     ava "It might help us narrow down our list of suspects."
     ava "Just be careful to not blow your cover, you're doing great so far."
     hide detective normal
+    show phone with moveinleft 
+    "Which suspect do you want to talk to first?"
+    
+    menu suspect_choice2:
+        "Oscar" if not oscar_questioned:
+            $ oscar_questioned = True
+            jump oscar_day3
+        "Frank" if not frank_questioned:
+            $ frank_questioned = True
+            jump frank_day3
+        "Emma" if not emma_questioned:
+            $ emma_questioned = True
+            jump emma_day3
+        "Continue" if emma_questioned and frank_questioned and oscar_questioned:
+            jump day3_debrief
+    return
+
+label day3_debrief:
+    scene bg library_afternoon
+    with fade
+    show detective normal
+    with dissolve
+    ava "How did your conversations go today?"
+    ava "Did you manage to get any photographs of the suspects?"
+    "You tell Ava about your conversations with the three suspects and how they went."
+    ava "Well that doesn't really narrow it down much."
+    ava "But don't worry, we'll get there. We just need to keep digging."
+    ava "Have any of them asked for money yet? Or hinted at needing some?"
+    ava "Romance fraudsters often ask for money for emergencies or travel, sometimes they do it indirectly by hinting at needing money."
+    "You explain that Oscar asked if you would interested in investing in his project and that Frank mentioned he was struggling financially."
+    ava "Interesting. Keep an eye on that. It could be a sign that they’re setting you up for a scam."
+    ava "Emma hasn't mentioned anything about money yet?"
+    "You tell Ava that Emma hasn't mentioned much about money other than that it costs alot to develop a computer game and that she's working on one."
+    ava "Well it's hard to say for sure at this point. But keep an eye on all of them."
+    ava "Another tactic that is often used is that they attempt to manipulate their victims by playing on their emotions."
+    ava "Have any of them tried to manipulate you in any way?"
+    "You explain that Emma seemed to be hurt when you asked for a picture of her and that Franks burst water pipe could be potentially be a way of making you feel sorry for him."
+    ava "Interesting."
+    ava "Unfortunately, we are running out of time. We need to make a decision soon."
+    ava "I think we have one more day to gather information before we need to make a decision."
+    ava "Keep talking to them, see if you can gather any more information and remember what we've learned. Tomorrow you'll need to decide who our fraudster is."
+    hide detective normal
+    with dissolve
+
     jump end_game
+
+
             

@@ -83,13 +83,14 @@ label emma_suspicious:
     "You chat with Emma for a little while longer before wrapping up the conversation."
     hide emma normal with moveoutright
     jump first_chat_menu
+    return
 
 label emma_day2:
     scene bg downtown1
     with fade
     stop music fadeout 2.0
     play music "the_cafe.wav" fadein 2.0
-    
+
     "As you walk through the city, on your way to get yourself a coffee, you hear a buzz from your work phone."
     play sound "audio/Effects/phone-vibration.wav"
     show phone at left with moveinleft
@@ -121,6 +122,7 @@ label emma_day2:
             emma "That’s amazing! I love that. I think everyone should travel at least once."
             emma "There’s so much to see and learn out there."
             call emma_dreams
+            return
         
         "Ask her about her dream" if asked_dream == False:
             "What about you? What’s something you’ve always wanted to do?"
@@ -131,10 +133,12 @@ label emma_day2:
             emma "I think it would be so cool to see something I made out there in the world."
             emma "Maybe one day, right?"
             call emma_dreams
+            return
 
         "Continue" if shared_dream and asked_dream:
             jump emma_day2_continue
             return
+    return 
 label emma_day2_continue:
     emma "I just feel like I could talk to you all day"
     emma "I hope you feel the same way."
@@ -144,5 +148,65 @@ label emma_day2_continue:
     "You let Emma know you have to go and say goodbye."
     hide emma normal with moveoutright
     jump oscar_day2
+    return
+
+label emma_day3:
+    show phone at left with moveinleft
+    show emma normal at right with moveinright
+    "You take another look at Emma's profile."
+    "The few photos she has of herself are all taken in a professional setting, theres no photos of her in a casual setting or anyone else in the pictures."
+    "You decide to send her a message and see how she responds."
+    emma "Hey there! How’s your day going?"
+    "Not bad, just doing some work. How about you?"
+    emma "I'm just working on some code for a new project. It's a big one."
+    emma "I'm hoping to get it finished soon so I can continue on my game."
+    emma "I'm excited to show you what I've been working on."
+    "That sounds interesting, I'd love to see it."
+    emma "I'm glad you think so. I'm really proud of it."
+    emma "I'm hoping it'll be a big hit."
+    "I was wondering do you have photos of your game? or any other projects you've worked on?"
+    emma "I do, but I'm not ready to show them yet. I want it to be a surprise."
+    emma "I promise I'll show you soon though."
+    "I was just looking through your profile, you have some great photos, they look almost too good."
+    emma "Thanks! I like to keep things professional."
+    emma "I think it's important to present yourself well, you know?"
+    emma "My little sister is actually a photographer, she takes all my photos."
+    "That's cool, she must be really talented."
+    emma "She is! I'm lucky to have her."
+    "Do you have pictures of yourself that she didn't take? Selfies maybe? It would be great to you see you in a more relaxed setting."
+    emma "I don't really take selfies. I'm not really a fan of them."
+    "Not even with friends or family?"
+    emma "No not really. I prefer to be behind the camera."
+    emma "I don’t really like sending pictures, to be honest."
+    "Oh is there a reason for that?"
+    emma "Why? Do you not trust me?"
+    menu:
+        "Tell her the truth":
+            "I'm just curious. I like to know the people I'm talking to."
+            emma "So you don't trust me?"
+            emma "I thought we had something special."
+            emma "I guess I was wrong."
+            jump emma_defensive
+        
+        "Lie":
+            "No, not at all. I was just curious."
+            emma "I get that. I'm just a private person, you know?"
+            emma "I like to keep things professional."
+    
+    emma "I'm sorry, I have to go. I have a meeting to get to."
+    emma "I'll talk to you later."
+    "You watch as Emma logs off the app."
+    hide emma normal with moveoutright
+    jump suspect_choice2
+    return
+
+label emma_defensive:
+    "You try to explain that you're just trying to get to know her better."
+    emma "I don't know, it just feels like you're prying."
+    emma "I thought we had a real connection."
+    emma "You are supposed to trust me."
+    hide emma normal with moveoutright   
+    "You try to explain yourself but Emma has already logged off the app."
+    jump suspect_choice2
     return
             

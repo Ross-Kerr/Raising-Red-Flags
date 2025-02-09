@@ -144,3 +144,54 @@ label frank_day2:
     "You head home, you try and recall anything that might help you in your investigation."
     jump ava_day2
     return
+
+label frank_day3:
+    show phone at left with moveinleft
+    show frank normal at right with moveinright
+    "You take another look at Frank's profile."
+    "His photos are all of his artwork, there's no photos of himself other than his profile picture."
+    "This seems a little strange and even suspicious."
+    "You decide to send him a message and see how he responds."
+    frank "Hey there! How’s your day going?"
+    "Not bad, just doing some work. How about you?"
+    frank "Not great, to be honest."
+    frank "Thats why I haven't messaged, I've been dealing with an emergency."
+    "I'm sorry to hear that. What happened?"
+    frank "I had a leak in my apartment, it's been a nightmare."
+    frank "I had to call a plumber and it's going to cost a fortune."
+    frank "I don't know how I'm going to afford it."
+    "That sounds really stressful. I hope it gets sorted out soon."
+    frank "Thanks, I appreciate it. I just feel like everything is going wrong."
+    frank "I'm sorry to unload on you like this."
+    "It's okay, I'm here to listen if you need to talk."
+    frank "You're really sweet. I'm glad we matched."
+    "I actually wanted to ask you something."
+    frank "Ask away mon cheri."
+    "Do you have any pictures of yourself? I'd love to see more of you."
+    "you only have pictures of your artwork on your profile."
+    frank "I'm sorry, I don't have any pictures of myself."
+    frank "I'm a little camera shy."
+    frank "The only picture I have on my phone is of my latest artwork."
+    "He sends you a picture of his latest painting, it's a beautiful landscape."
+    hide phone with dissolve
+    hide frank normal with dissolve
+    show franks_art at truecenter with dissolve
+    "Wow, that's really impressive. You're really talented."
+    hide franks_art with dissolve
+    show frank normal at right with dissolve
+    show phone at left with dissolve
+    frank "Thank you, I'm glad you like it."
+    frank "I'm really proud of that one."
+    frank "I'm glad I can share it with you."
+    "It just seems a shame that you don't have any pictures of yourself."
+    "It's just a little strange."
+    frank "I know, I'm sorry. I'm just not comfortable with it."
+    frank "I hope you understand."
+    frank "Maybe if I can fix my apartment I can find the time to take a picture of myself."
+    frank "I'd love to show you who I am."
+    "That would be nice, I'd like to see who I'm talking to."
+    "You chat with Frank for a little while longer before wrapping up the conversation."
+    hide frank normal with moveoutright
+    hide phone with moveoutleft
+    jump suspect_choice2
+    return
