@@ -19,6 +19,8 @@ label start:
     # add a file (named either "bg room.png" or "bg room.jpg") to the
     # images directory to show it.
     stop music
+    scene bg controls
+    pause 8.0
     scene bg gate_day
     with fade
     play music "lets_go.wav"
