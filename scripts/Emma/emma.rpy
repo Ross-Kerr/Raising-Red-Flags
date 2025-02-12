@@ -196,6 +196,7 @@ label emma_day3:
     emma "I'm sorry, I have to go. I have a meeting to get to."
     emma "I'll talk to you later."
     "You watch as Emma logs off the app."
+    "You're left feeling a little unsure about the situation. Perhaps that was one of the red flags Ava mentioned."
     hide emma normal with moveoutright
     jump suspect_choice2
     return
@@ -207,6 +208,129 @@ label emma_defensive:
     emma "You are supposed to trust me."
     hide emma normal with moveoutright   
     "You try to explain yourself but Emma has already logged off the app."
+    "You're left feeling a little unsure about the situation. Perhaps that was one of the red flags Ava mentioned."
     jump suspect_choice2
     return
+
+label emma_day4:
+    scene bg neighborhood
+    with fade
+    stop music fadeout 2.0
+    play music "solvepuzzle.wav" fadein 2.0
+    "The next morning, as you walk through your neighborhood on the way to work, you hear a buzz from your work phone."
+    play sound "audio/Effects/phone-vibration.wav"
+    show phone at left with moveinleft
+    "It's a message from Emma."
+    show emma normal at right with moveinright
+    emma "Hey! how are you?"
+    emma "I just wanted to say sorry for being kind of short with you yesterday about the photos."
+    emma "I've just been a bit stressed with work lately and I took it out on you and I apologise."
+    emma "I hope you can forgive me."
+    "It's okay, I understand. We all have bad days."
+    emma "Thank you for understanding. I really appreciate it."
+    emma "I need to go now, I have a meeting to get to."
+    emma "I'll talk to you later."
+    "You watch as Emma logs off the app."
+    hide emma normal with moveoutright
+    hide phone with moveoutleft
+    jump oscar_day4
+    return
+
+label emma_day4_part2:
+    scene bg library_afternoon
+    with fade
+    "You prepare to meet with Ava to discuss the case. When you hear a buzz from your work phone."
+    play sound "audio/Effects/phone-vibration.wav"
+    show phone at left with moveinleft
+    "It's Emma."
+    show emma normal at right with moveinright
+    emma "Oh my god! I can't believe it!"
+    emma "I just got a call and you wont beleive it!"
+    "Is everything okay?"
+    emma "Yeah better than okay! I just got a call from game jam I signed up for months ago."
+    emma "They rejected me a few months back as they were fully booked but they called to say someone has cancelled and a space has opened up."
+    emma "I'm so excited! I can't believe it!"
+    "That's great news! I'm so happy for you."
+    emma "Thanks! I've been working so hard on my game lately and this could be the big break I've been waiting for."
+    emma "There are alot of game developers and publishers going to be there so it's a great opportunity for me to show off my game and maybe even get it picked up."
+    "That's amazing! I'm so happy for you."
+    emma "Thank you! I have just one massive favour to ask you though and I know it's a big ask."
+    emma "There is a £25 entry fee that needs paid today and I don't get paid until tomorrow. I was wondering if you could help me out?"
+    "This is exactly what Ava warned you about. It's a red flag."
+    emma "I know it's a big ask and I wouldn't ask if I wasn't desperate."
+    emma "I'll send you the money back first thing in the morning when I get paid and I'll send you all the information you want so you know I'm legit."
+    "A number of links appear in the app."
+    "The first is a link to the game jam website, the second is a link to a payment page."
+    menu:
+        "Check out the webiste":
+            "You click on the link to the game jam website."
+            "It's a legitimate website for game developers to showcase their work and get it picked up by publishers."
+            "You see the event Emma mentioned is taking place this weekend and is located in the city."
+            "The website lists the entry fee of £25 and the deadline for payment as today."
+
+        "Check out the payment page":
+            "You click on the link to the payment page."
+            "It's a well known payment service that is used by many people to send and receive money called 'FundFriends'."
+            "You see the payment is for £25 and the recipient is Emma's email address."
+
+    emma "I also have a bunch of screenshots of my game if you want to see them."
+    "A number of screenshots appear in the app."
+    hide emma normal with moveoutright
+    hide phone with moveoutleft
+    show emma_game_art at truecenter with dissolve
+    "The screenshots show various aspects of the game, such as a main menu, and a few vehicles like tanks and jets."
+    hide emma_game_art with moveoutdown
+    show phone at left with moveinleft
+    show emma normal at right with moveinright
+    emma "I'ts a strategy game where you build your own base and army and take on other players."
+    emma "I haven't gotten the multiplayer aspect working yet but I'm hoping to have the single player side finished before the event."
+    "It looks great! I'm really impressed."
+    emma "So what do you think? Can you help me out?"
+    emma "You'll be helping to take a chance at my dream and like I said I'll pay you back tomorrow."
+    "It is a relatively small amount of money and Emma has promised to pay you back."
+    "But it's still a red flag."
+    "What do you do?"
+    menu:
+        "Pay the entry fee":
+            "You decide to help Emma out and pay the entry fee."
+            "You send the money and Emma thanks you."
+            "You feel good about helping her out and hope that she gets her big break."
+            jump emma_paid
+
+        "Decline":
+            "You decide not to help Emma out and decline her request."
+            "You tell her you can't help her out and she seems disappointed but understanding."
+            "You wish her luck with the game jam and hope she gets her big break."
+            jump emma_refused
+
+    return
+
+label emma_paid:
+    emma "Oh my god thank you so much!"
+    emma "I can't believe you did that for me."
+    emma "I promise I'll pay you back first thing tomorrow."
+    emma "You've helped me take a chance at my dream and I'll never forget it."
+    "You watch as Emma logs off the app."
+    hide emma normal with moveoutright
+    hide phone with moveoutleft
+    "Maybe this wasn't the best thing to do. You need to go speak to Ava and decide on who your suspect is."
+    jump final_debrief
+return
+label emma_refused:
+    emma "What? Why not?"
+    emma "I can't beleive you're not going to help!"
+    emma "I'm going to miss on a huge opportunity because of you!"
+    emma "All for just £25 which I would have paid back tomorrow."
+    emma "I can't beleive you!"
+    "You watch as Emma logs off the app."
+    hide emma normal with moveoutright
+    hide phone with moveoutleft
+    "You need to go speak to Ava and decide on who your suspect is."
+    jump final_debrief
+
+return
+
+
+    jump end_game
+
             

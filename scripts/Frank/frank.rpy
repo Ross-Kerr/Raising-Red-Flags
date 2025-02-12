@@ -191,7 +191,69 @@ label frank_day3:
     frank "I'd love to show you who I am."
     "That would be nice, I'd like to see who I'm talking to."
     "You chat with Frank for a little while longer before wrapping up the conversation."
+    "You're left feeling a little unsure about the situation. Perhaps that was one of the red flags Ava mentioned."
     hide frank normal with moveoutright
     hide phone with moveoutleft
     jump suspect_choice2
     return
+
+label frank_day4:
+    show phone at left with moveinleft
+    "You open up your phone and send a message to Frank, after several minutes you get a response."
+    show frank normal at right with moveinright
+    frank "Well my day just got a whole lot better, now that I'm talking to you."
+    frank "I've been thinking about you all day."
+    "That's really sweet of you to say."
+    frank "It's true. I can't get you out of my head."
+    frank "It's the thought of you that has kept me going over the last few days."
+    "I'm flattered, but that's a lot of pressure."
+    frank "Don't worry, just your natural charm is enough."
+    frank "You've been a massive inspiration lately, I got the repair bill for my apartment."
+    frank "It's going to cost a lot more than I thought. Close to £1000!"
+    "That's a lot of money. I'm sorry to hear that."
+    frank "I don't know how I'm going to afford it."
+    frank "I thought that since your such a positive part of my life, I'd see if you could help me."
+    "You recall that Ava mentioned that scammers often ask for money for emergencies."
+    frank "So I buckled down and got to work painting! I used you as my muse and I think I've outdone myself."
+    frank "I've spent all night working on a few new pieces and I think they're some of my best work."
+    frank "Now I just need to sell them!"
+    "Well I'm flattered that I inspired you."
+    frank "I was hoping you could help me sell them this weekend."
+    frank "I know it's a lot to ask, but I'm desperate."
+    "He sends you a link to an art gallery where his work is being displayed."
+    "The gallery is real and located in the next city over but there is no mention of his work specifically. There is an amatuer art display on this weekend."
+    frank "I just thought it would be a great opportunity for us to meet."
+    frank "Plus if you help me sell my art, you will literally be my hero coming to save me!"
+    frank "Also who knows maybe you'll find something you like."
+    "The situation leaves you feeling a little uneasy. It seems like Frank is asking for a lot."
+    "It's a delicate situation, how will you respond?"
+    menu:
+        "Lie and say you can't make it":
+            "I'm so sorry Frank, I have to work this weekend."
+            frank "Oh."
+            frank "That's a shame."
+            frank "I really thought you'd want to help me."
+            frank "I guess I was wrong."
+            "Before you have a chance to respond, Frank logs off."
+            "You're not sure if you made the right choice. He could be attempting to emotionally manipulate you into helping like Ava mentioned."
+            "This could be a red flag."
+            hide frank normal with moveoutright
+            hide phone with moveoutleft
+            jump emma_day4_part2
+
+        "Agree to go":
+            "I'd love to help you out Frank."
+            frank "Really? That's amazing!"
+            frank "I can't wait to see you in person."
+            frank "I'll make sure you have a great time."
+    
+    frank "Anyway I better go and keep working on my art."
+    frank "I'll see you this weekend."
+    "You watch as Frank logs off and you're left feeling a little uneasy."
+    hide frank normal with moveoutright
+    hide phone with moveoutleft
+    jump emma_day4_part2
+    return
+
+
+        

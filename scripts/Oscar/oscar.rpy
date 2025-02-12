@@ -210,3 +210,44 @@ label oscar_day3:
     "You decide its best to start filling in your report for today before you forget anything."
     jump suspect_choice2
     return
+
+label oscar_day4:
+    scene bg library_day
+    "You arrive at work and continue to work on your case notes."
+    "You're interrupted by a message from Oscar."
+    play sound "audio/Effects/phone-vibration.wav"
+    show phone at left with moveinleft
+    show oscar normal at right with moveinright
+    oscar "Hey there! How’s your day going?"
+    "Not bad, just doing some work. How about you?"
+    oscar "Pretty good, I can't really complain about my office today haha!"
+    hide oscar normal with dissolve
+    hide phone with dissolve
+    show oscar_beach at truecenter with dissolve
+    "An image appears in the chat window, it shows a beach with a stunning cityscape in the background."
+    "The message reads 'Wish you were here'."
+    hide oscar_beach with dissolve
+    show oscar normal at right with dissolve
+    show phone at left with dissolve
+    oscar "I'm just taking a break from work and enjoying the view."
+    oscar "I've got some great news I was able to find another investor for the project."
+    oscar "So I think I've earned a little break don't you think?"
+    "That's great news, congratulations!"
+    oscar "Thanks, it does mean I'll need to extend my stay here a little longer."
+    oscar "Maybe you could come out and join me for the weekend?"
+    oscar "It would be great to meet you in person and show you around."
+    "That sound like fun, I'd love to be able to come out."
+    oscar "Great! I'll start looking at flights and hotels for you."
+    oscar "I'll make sure to keep you updated on the details."
+    "A few moments go by before you receive another message from Oscar."
+    oscar "So slight issue, my credit card isn't working out here."
+    oscar "I'll see what I can figure out, but you might need to book the flights yourself."
+    oscar "I'll keep trying and keep you posted, maybe I can get through to the credit card company later."
+    oscar "It's a shame as I was really looking forward to meeting you, and really wanted to spoil you for the weekend."
+    oscar "Anyway I better get back to work, I'll message you later."
+    hide oscar normal with moveoutright
+    hide phone with moveoutleft
+    "You're left feeling a little unsure about the situation. Perhaps that was one of the red flags Ava mentioned."
+    "You haven't heard from Frank yet, maybe you should check in with him."
+    jump frank_day4
+    return

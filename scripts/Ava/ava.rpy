@@ -21,6 +21,7 @@ label day1_debrief:
     ava "Alright, I've done some research, let’s talk about a key tactic romance fraudsters use."
     ava "They often give away harmless personal details early on—like where they grew up, what they do for work, or what their dreams are."
     ava "Later, they use these same details as ‘evidence’ to build their scam, making their requests for money seem more legitimate and urgent."
+    ava "We should keep an eye out for these red flags when talking to the suspects."
     ava "So pay attention to what they tell you at the start. It might seem innocent now, but it could be part of a bigger scheme."
     ava "Got it? Good. I'll keep researching and you keep talking to them and let's see what we uncover."
     hide detective normal
@@ -86,7 +87,7 @@ label day3:
     ava "I’ve been researching more about romance fraud and I think I’ve found something interesting."
     ava "It seems like the scammer often uses a fake identity to gain trust and manipulate their victims."
     ava "So, it could be that the suspect is using a fake name or identity to lure in their victims."
-    ava "Look out for things like photographs that look too good to be true or photographs that don't really show the person's face."
+    ava "Look out for things like photographs that look too good to be true or photographs that don't really show the person's face. These are red flags"
     ava "And remember, trust your instincts. If something feels off, it probably is."
     ava "Maybe try and get a photograph of the suspect to see if it matches up with what you know."
     ava "It might help us narrow down our list of suspects."
@@ -109,7 +110,9 @@ label day3:
             jump day3_debrief
     return
 
+$ suspect_reasoning2 = ""
 label day3_debrief:
+    
     scene bg library_afternoon
     with fade
     show detective normal
@@ -131,12 +134,36 @@ label day3_debrief:
     "You explain that Emma seemed to be hurt when you asked for a picture of her and that Franks burst water pipe could be potentially be a way of making you feel sorry for him."
     ava "Interesting."
     ava "Unfortunately, we are running out of time. We need to make a decision soon."
+    ava "Do you have more thoughts on who our suspect might be? Have you been able to spot any red flags?"
+    menu suspect_choice3:
+        "Oscar":
+            "I think it might be Oscar."
+            ava "Interesting choice. What makes you think it’s him?"
+            $ suspect_reasoning = renpy.input("Enter your reasoning:")
+            ava "Alright, I'll add that to our report."
+            
+        "Frank":
+            "I think it might be Frank."
+            ava "Interesting choice. What makes you think it’s him?"
+            $ suspect_reasoning = renpy.input("Enter your reasoning:")
+            ava "Alright, I'll add that to our report."
+            
+        "Emma":
+            "I think it might be Emma."
+            ava "Interesting choice. What makes you think it’s her?"
+            $ suspect_reasoning = renpy.input("Enter your reasoning:")
+            ava "Alright, I'll add that to our report."
+
+        "I dont know":
+            "I'm not sure yet."
+            ava "That's okay. We should be able to get more information tomorrow."
+
     ava "I think we have one more day to gather information before we need to make a decision."
     ava "Keep talking to them, see if you can gather any more information and remember what we've learned. Tomorrow you'll need to decide who our fraudster is."
     hide detective normal
     with dissolve
 
-    jump end_game
+    jump emma_day4
 
 
             
