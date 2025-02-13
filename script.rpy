@@ -176,7 +176,7 @@ label Case_breifing:
                 "Oscar" if not interacted_oscar_day1:
                     $ interacted_oscar_day1 = True
                     call oscar_first_interaction
-                    return
+            return
             
             "Before you know it, the sun is setting and it's time to head home."
             "You've made good progress today, but you know there's still a long way to go before you can catch the fraudster."

@@ -1,5 +1,6 @@
 default shared_dream = False
 default asked_dream = False
+default emma_paid = False
 
 
 $ shared_dream = False
@@ -279,7 +280,7 @@ label emma_day4_part2:
     hide phone with moveoutleft
     show emma_game_art at truecenter with dissolve
     "The screenshots show various aspects of the game, such as a main menu, and a few vehicles like tanks and jets."
-    hide emma_game_art with moveoutdown
+    hide emma_game_art with dissolve
     show phone at left with moveinleft
     show emma normal at right with moveinright
     emma "I'ts a strategy game where you build your own base and army and take on other players."
@@ -307,6 +308,7 @@ label emma_day4_part2:
 
 label emma_paid:
     emma "Oh my god thank you so much!"
+    $ emma_paid = True
     emma "I can't believe you did that for me."
     emma "I promise I'll pay you back first thing tomorrow."
     emma "You've helped me take a chance at my dream and I'll never forget it."
@@ -330,7 +332,5 @@ label emma_refused:
 
 return
 
-
-    jump end_game
 
             
