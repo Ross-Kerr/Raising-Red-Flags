@@ -1,5 +1,12 @@
 $ told_truth = False
 $ final_choice = ""
+default suspect_choice1 = ""
+default suspect_choice2 = ""
+default suspect_choice3 = ""
+default suspect_reasoning1 = ""
+default suspect_reasoning2 = ""
+default suspect_reasoning3 = ""
+
 
 # Scripts for Ava
 label day1_debrief:
@@ -28,7 +35,8 @@ label day1_debrief:
     hide detective normal
     jump emma_day2
 
-$ suspect_reasoning = ""
+$ suspect_reasoning1 = ""
+$ suspect_choice1 = ""
 label ava_day2:
     scene bg downtown 3 night light
     with fade
@@ -47,24 +55,28 @@ label ava_day2:
     menu suspect_choice:
         "Oscar":
             "I think it might be Oscar."
+            $ suspect_choice1 = "Oscar"
             ava "Interesting choice. What makes you think it’s him?"
-            $ suspect_reasoning = renpy.input("Enter your reasoning:")
+            $ suspect_reasoning1 = renpy.input("Enter your reasoning (type your reasoning and press enter):")
             ava "That’s a good point. Keep an eye on him and see if he fits the profile."
             
         "Frank":
             "I think it might be Frank."
+            $ suspect_choice1 = "Frank"
             ava "Interesting choice. What makes you think it’s him?"
-            $ suspect_reasoning = renpy.input("Enter your reasoning:")
+            $ suspect_reasoning1 = renpy.input("Enter your reasoning (type your reasoning and press enter):")
             ava "That’s a good point. Keep an eye on him and see if he fits the profile."
             
         "Emma":
             "I think it might be Emma."
+            $ suspect_choice1 = "Emma"
             ava "Interesting choice. What makes you think it’s her?"
-            $ suspect_reasoning = renpy.input("Enter your reasoning:")
+            $ suspect_reasoning1 = renpy.input("Enter your reasoning (type your reasoning and press enter):")
             ava "That’s a good point. Keep an eye on her and see if she fits the profile."
 
         "I dont know":
             "I'm not sure yet."
+            $ suspect_choice1 = "I dont know"
             ava "That's okay. Keep talking to them and see if you can gather more information."
     ava "Alright, keep me updated on your progress. We’ll catch this scammer together."
     ava "I'm going to pull a late nighter to dig up more information. Talk to you in the morning."
@@ -112,6 +124,7 @@ label day3:
     return
 
 $ suspect_reasoning2 = ""
+$ suspect_choice2 = ""
 label day3_debrief:
     
     scene bg library_afternoon
@@ -139,24 +152,28 @@ label day3_debrief:
     menu suspect_choice3:
         "Oscar":
             "I think it might be Oscar."
+            $ suspect_choice2 = "Oscar"
             ava "Interesting choice. What makes you think it’s him?"
-            $ suspect_reasoning = renpy.input("Enter your reasoning:")
+            $ suspect_reasoning2 = renpy.input("Enter your reasoning (type your reasoning and press enter)(type your reasoning and press enter):")
             ava "Alright, I'll add that to our report."
             
         "Frank":
             "I think it might be Frank."
+            $ suspect_choice2 = "Frank"
             ava "Interesting choice. What makes you think it’s him?"
-            $ suspect_reasoning = renpy.input("Enter your reasoning:")
+            $ suspect_reasoning2 = renpy.input("Enter your reasoning (type your reasoning and press enter):")
             ava "Alright, I'll add that to our report."
             
         "Emma":
             "I think it might be Emma."
+            $ suspect_choice2 = "Emma"
             ava "Interesting choice. What makes you think it’s her?"
-            $ suspect_reasoning = renpy.input("Enter your reasoning:")
+            $ suspect_reasoning2 = renpy.input("Enter your reasoning (type your reasoning and press enter):")
             ava "Alright, I'll add that to our report."
 
         "I dont know":
             "I'm not sure yet."
+            $ suspect_choice2 = "I dont know"
             ava "That's okay. We should be able to get more information tomorrow."
 
     ava "I think we have one more day to gather information before we need to make a decision."
@@ -168,6 +185,7 @@ label day3_debrief:
     return
 
 label final_debrief:
+    $ suspect_reasoning3 = ""
     scene bg library_afternoon
     with fade
     show detective normal with dissolve
@@ -178,47 +196,49 @@ label final_debrief:
         ava "You can't give money to a suspect! You could have compromised the entire operation."
         ava "Not to mention you've never met this person in real life. You can't trust them."
     else:
-        ava "Well I guess we better quickly recap, the red flags we've learned about, before you make your final decision."
-        ava "Romance fraudsters often profess their love quickly, claim to be working overseas, and ask for money for emergencies or travel."
-        ava "They often give away harmless personal details early on—like where they grew up, what they do for work, or what their dreams are."
-        ava "Later, they use these same details as ‘evidence’ to build their scam, making their requests for money seem more legitimate and urgent."
-        ava "They often use a fake identity to gain trust and manipulate their victims into feeling sorry for them. They also try to keep their victims isolated."
-        ava "Often the photos they use are too good to be true or don't show the person's face. They can also be photos of someone else."
-        ava "They don't always ask for money directly, sometimes they hint at needing money or ask for investments. Sometimes it can be small amounts that they pay back to gain trust."
-        ava "They try to make their victims feel special, they often will message the victim frequently and will usually be the first to message. This helps make the victim feel as though they are wanted."
-        ava "Finally, these scammers can be incredibly patient and will often work to develop what feels like a true relationship over time, before asking for money."
-        ava "So, who do you think our scammer is?"
-        menu final_choice:
-            "Oscar":
-                "I think it might be Oscar."
-                $ final_choice = "Oscar"
-                ava "Interesting choice. What makes you think it’s him?"
-                $ suspect_reasoning = renpy.input("Enter your reasoning:")
-                ava "Alright, I'll add that to our report."
-                
-            "Frank":
-                "I think it might be Frank."
-                $ final_choice = "Frank"
-                ava "Interesting choice. What makes you think it’s him?"
-                $ suspect_reasoning = renpy.input("Enter your reasoning:")
-                ava "Alright, I'll add that to our report."
-                
-            "Emma":
-                "I think it might be Emma."
-                $ final_choice = "Emma"
-                ava "Interesting choice. What makes you think it’s her?"
-                $ suspect_reasoning = renpy.input("Enter your reasoning:")
-                ava "Alright, I'll add that to our report."
-        
-        ava "Okay I trust your judgement. I'll get a warrant ready and we'll make an arrest tomorrow."
-        ava "Thank you for all your hard work. You did great."
-        ava "I'll catch up with you tomorrow"
-        hide detective normal
-        with dissolve
+        ava "Good job on not giving Emma the money. You did the right thing."
 
-        "You finally made your decision. You hope it's the right one."
-        jump case_results
-        return
+    ava "Well I guess we better quickly recap, the red flags we've learned about, before you make your final decision."
+    ava "Romance fraudsters often profess their love quickly, claim to be working overseas, and ask for money for emergencies or travel."
+    ava "They often give away harmless personal details early on—like where they grew up, what they do for work, or what their dreams are."
+    ava "Later, they use these same details as ‘evidence’ to build their scam, making their requests for money seem more legitimate and urgent."
+    ava "They often use a fake identity to gain trust and manipulate their victims into feeling sorry for them. They also try to keep their victims isolated."
+    ava "Often the photos they use are too good to be true or don't show the person's face. They can also be photos of someone else."
+    ava "They don't always ask for money directly, sometimes they hint at needing money or ask for investments. Sometimes it can be small amounts that they pay back to gain trust."
+    ava "They try to make their victims feel special, they often will message the victim frequently and will usually be the first to message. This helps make the victim feel as though they are wanted."
+    ava "Finally, these scammers can be incredibly patient and will often work to develop what feels like a true relationship over time, before asking for money."
+    ava "So, who do you think our scammer is?"
+    menu final_choice:
+        "Oscar":
+            "I think it might be Oscar."
+            $ final_choice = "Oscar"
+            ava "Interesting choice. What makes you think it’s him?"
+            $ suspect_reasoning3 = renpy.input("Enter your reasoning (type your reasoning and press enter):")
+            ava "Alright, I'll add that to our report."
+                
+        "Frank":
+            "I think it might be Frank."
+            $ final_choice = "Frank"
+            ava "Interesting choice. What makes you think it’s him?"
+            $ suspect_reasoning3 = renpy.input("Enter your reasoning (type your reasoning and press enter):")
+            ava "Alright, I'll add that to our report."
+                
+        "Emma":
+            "I think it might be Emma."
+            $ final_choice = "Emma"
+            ava "Interesting choice. What makes you think it’s her?"
+            $ suspect_reasoning3 = renpy.input("Enter your reasoning (type your reasoning and press enter):")
+            ava "Alright, I'll add that to our report."
+        
+    ava "Okay I trust your judgement. I'll get a warrant ready and we'll make an arrest tomorrow."
+    ava "Thank you for all your hard work. You did great."
+    ava "I'll catch up with you tomorrow"
+    hide detective normal
+    with dissolve
+
+    "You finally made your decision. You hope it's the right one."
+    jump case_results
+    return
 
 label case_results:
     scene bg courtyard2
@@ -262,7 +282,34 @@ label correct_choice:
         "You helped Ava catch the scammer."
         "You feel like you made a difference."
         "The case is solved."
+        "You recall the information you learned during the investigation."
+        if suspect_choice1 =="I dont know":
+            "You weren't sure who the scammer was to start with."
+        else:
+            "Your first suspect was [suspect_choice1]."
+            "You thought this because [suspect_reasoning1]"
+        if suspect_choice2 =="I dont know":
+            "You weren't sure who the scammer was after talking to them for a few day."
+        else:
+            "Your second suspect was [suspect_choice2]."
+            "You thought this because [suspect_reasoning2]"
+        
+        "Your final suspect was [final_choice]."
+        "You thought this because [suspect_reasoning3]"
+        "You were able to spot the red flags and make the right choice."
+        "You should feel proud of the work you did."
+        hide detective normal
+        with dissolve
+        hide window
+        with dissolve
+        scene black
+        stop music fadeout 2.0
+        $ renpy.movie_cutscene("images/RRF_Credits.webm")
+
+        
+    
         jump end_game
+    
         return
 
 label wrong_choice:
@@ -273,9 +320,32 @@ label wrong_choice:
     "You feel like you let Ava down."
     "You'll have to live with the consequences of your decision."
     "The case remains unsolved."
+    "You recall the information you learned during the investigation."
+    if suspect_choice1 =="I dont know":
+        "You weren't sure who the scammer was to start with."
+    else:
+        "Your first suspect was [suspect_choice1]."
+        "You thought this because [suspect_reasoning1]"
+    if suspect_choice2 =="I dont know":
+        "You weren't sure who the scammer was after talking to them for a few day."
+    else:
+        "Your second suspect was [suspect_choice2]."
+        "You thought this because [suspect_reasoning2]"
+    "Your final suspect was [final_choice]."
+    "You thought this because [suspect_reasoning3]"
+    "Although you were wrong this time, you still did your best."
+    "You may have missed some red flags, but you'll learn from this experience."
+    "It's all part of the learning process and it can be very difficult to spot a romance fraudster."
+    hide detective normal
+    with dissolve
+    hide window
+    with dissolve
+    scene black
+    stop music fadeout 2.0
+    $ renpy.movie_cutscene("images/RRF_Credits.webm")
+
     jump end_game
     return
-
 
 
 

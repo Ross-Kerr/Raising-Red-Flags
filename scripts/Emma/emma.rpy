@@ -237,6 +237,9 @@ label emma_day4:
     jump oscar_day4
     return
 
+
+default checked_website = False
+default checked_payment = False
 label emma_day4_part2:
     scene bg library_afternoon
     with fade
@@ -256,23 +259,32 @@ label emma_day4_part2:
     emma "There are alot of game developers and publishers going to be there so it's a great opportunity for me to show off my game and maybe even get it picked up."
     "That's amazing! I'm so happy for you."
     emma "Thank you! I have just one massive favour to ask you though and I know it's a big ask."
-    emma "There is a £25 entry fee that needs paid today and I don't get paid until tomorrow. I was wondering if you could help me out?"
+    emma "There is a £10 entry fee that needs paid today and I don't get paid until tomorrow. I was wondering if you could help me out?"
     "This is exactly what Ava warned you about. It's a red flag."
     emma "I know it's a big ask and I wouldn't ask if I wasn't desperate."
     emma "I'll send you the money back first thing in the morning when I get paid and I'll send you all the information you want so you know I'm legit."
     "A number of links appear in the app."
     "The first is a link to the game jam website, the second is a link to a payment page."
-    menu:
-        "Check out the webiste":
+
+    
+
+
+    menu emma_links:
+        "Check out the webiste" if not checked_website:
             "You click on the link to the game jam website."
             "It's a legitimate website for game developers to showcase their work and get it picked up by publishers."
             "You see the event Emma mentioned is taking place this weekend and is located in the city."
-            "The website lists the entry fee of £25 and the deadline for payment as today."
+            "The website lists the entry fee of £10 and the deadline for payment as today."
+            $ checked_website = True
+            jump emma_links
 
-        "Check out the payment page":
+        "Check out the payment page" if not checked_payment:
             "You click on the link to the payment page."
             "It's a well known payment service that is used by many people to send and receive money called 'FundFriends'."
-            "You see the payment is for £25 and the recipient is Emma's email address."
+            "You see the payment is for £10 and the recipient is Emma's email address."
+            $ checked_payment = True
+            jump emma_links
+        
 
     emma "I also have a bunch of screenshots of my game if you want to see them."
     "A number of screenshots appear in the app."
@@ -322,7 +334,7 @@ label emma_refused:
     emma "What? Why not?"
     emma "I can't beleive you're not going to help!"
     emma "I'm going to miss on a huge opportunity because of you!"
-    emma "All for just £25 which I would have paid back tomorrow."
+    emma "All for just £10 which I would have paid back tomorrow."
     emma "I can't beleive you!"
     "You watch as Emma logs off the app."
     hide emma normal with moveoutright
