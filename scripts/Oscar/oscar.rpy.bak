@@ -119,7 +119,7 @@ label oscar_day2:
             oscar "It's a bid to turn a local abandoned building into an entertainment complex."
             oscar "It'll have things like bowling, arcade games, a bar, and a restaurant."
             oscar "I'm hoping to get the investors to see the potential in it."
-            call oscar_investments from _call_oscar_investments
+            call oscar_investments
         
         "Ask about his previous investments" if previous_investments == False:
             "What kind of investments do you usually work on?"
@@ -130,7 +130,7 @@ label oscar_day2:
             oscar "I'm always looking for new opportunities to invest in, it's exciting."
             oscar "Like previously I invested in a local coffee shop, it's doing really well."
             oscar "I also managed to get funding for a set of luxury apartments, they're almost finished."
-            call oscar_investments from _call_oscar_investments_1
+            call oscar_investments
         
         "Continue" if current_investments and previous_investments:
             jump oscar_day2_continue

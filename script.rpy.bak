@@ -138,13 +138,13 @@ label Case_breifing:
 
             "Emma" if not viewed_emma:
                 $ viewed_emma = True
-                call emma_intro from _call_emma_intro
+                call emma_intro
             "Frank" if not viewed_frank:
                 $ viewed_frank = True
-                call frank_intro from _call_frank_intro
+                call frank_intro
             "Oscar" if not viewed_oscar:
                 $ viewed_oscar = True
-                call oscar_intro from _call_oscar_intro
+                call oscar_intro
             
             "continue" if viewed_emma and viewed_frank and viewed_oscar:
                 jump getting_started
@@ -169,13 +169,13 @@ label Case_breifing:
                 "who do you want to chat to?"
                 "Emma" if not interacted_emma_day1:
                     $ interacted_emma_day1 = True
-                    call emma_first_interaction from _call_emma_first_interaction
+                    call emma_first_interaction
                 "Frank" if not interacted_frank_day1:
                     $ interacted_frank_day1 = True
-                    call frank_first_interaction from _call_frank_first_interaction
+                    call frank_first_interaction
                 "Oscar" if not interacted_oscar_day1:
                     $ interacted_oscar_day1 = True
-                    call oscar_first_interaction from _call_oscar_first_interaction
+                    call oscar_first_interaction
             return
             
             "Before you know it, the sun is setting and it's time to head home."

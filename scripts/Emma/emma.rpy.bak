@@ -122,7 +122,7 @@ label emma_day2:
             $ shared_dream = True
             emma "That’s amazing! I love that. I think everyone should travel at least once."
             emma "There’s so much to see and learn out there."
-            call emma_dreams from _call_emma_dreams
+            call emma_dreams
             return
         
         "Ask her about her dream" if asked_dream == False:
@@ -133,7 +133,7 @@ label emma_day2:
             emma "But I'm working on it, slowly but surely."
             emma "I think it would be so cool to see something I made out there in the world."
             emma "Maybe one day, right?"
-            call emma_dreams from _call_emma_dreams_1
+            call emma_dreams
             return
 
         "Continue" if shared_dream and asked_dream:
